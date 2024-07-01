@@ -17,6 +17,7 @@ let resultArea = document.getElementById("result-area");
 let remainText = document.getElementById("remain-text");
 let resetButton = document.getElementById("reset-button");
 let inputList = document.getElementById("input-list");
+let resultNum = document.getElementById("result-num");
 
 playButton.addEventListener("click", play);
 resetButton.addEventListener("click", reset);
@@ -27,6 +28,9 @@ function reset() {
   remainText.textContent = `남은 횟수: ${remain_num}`;
   resultArea.textContent = "결과가 나옴";
   playButton.disabled = false;
+  pickRandomNum();
+  history = []
+  inputList.textContent = '입력한 숫자: '
 }
 
 userInput.addEventListener("focus", function() {
@@ -36,6 +40,7 @@ userInput.addEventListener("focus", function() {
 function pickRandomNum(){
   computerNum = Math.floor(Math.random() * 50) + 1;
   console.log("정답",computerNum);
+  resultNum.textContent = `정답: ${computerNum}`
 }
 
 function play() {
