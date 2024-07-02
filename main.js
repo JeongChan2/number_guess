@@ -47,7 +47,7 @@ function play() {
   let userValue = userInput.value;
 
   if(userValue < 0 || userValue > 50 || userValue.trim() == ''){
-    resultArea.textContent = "0부터 50사이의 숫자를 입력해주세요.";
+    resultArea.textContent = "1부터 50사이의 숫자를 입력해주세요.";
     return;
   }
 
@@ -61,12 +61,6 @@ function play() {
   history.push(userValue);
   inputList.textContent = `입력한 숫자: ${history}`
 
-  if(remain_num < 1) {
-    playButton.disabled = true;
-    resultArea.textContent = "기회 소진!"
-    return;
-  }
-
   if(userValue < computerNum){
     resultArea.textContent = "Up!!!"
   }else if(userValue > computerNum){
@@ -74,7 +68,15 @@ function play() {
   } else {
     resultArea.textContent = `정답!!! ${userValue}`
     playButton.disabled = true;
+    return;
   }
+
+  if(remain_num < 1) {
+    playButton.disabled = true;
+    resultArea.textContent = "기회 소진!"
+    return;
+  }
+
 }
 
 pickRandomNum();
